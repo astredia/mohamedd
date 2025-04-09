@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>موقع AL MUBASHERI - محاماة</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <style>
+        :root {
+            --color-primary: #663700;
+            --color-secondary: #fff;
+            --color-accent: #7d5526;
+            --color-bg: #f9f9f9;
+            /* --color-primary: #47291f;
+            --color-secondary: #fff;
+            --color-accent: #5f2b20;
+            --color-bg: #f9f9f9; */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #loader {
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--color-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .secondary-bar {
+            background: var(--color-primary);
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .secondary-left,
+        .secondary-center,
+        .secondary-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .secondary-left {
+            justify-content: flex-start;
+        }
+
+        .secondary-center {
+            justify-content: center;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .secondary-right {
+            justify-content: flex-end;
+        }
+
+        .secondary-left .working-hours i {
+            color: var(--color-accent);
+            margin-left: 0.3rem;
+        }
+
+        .secondary-right a {
+            color: var(--color-secondary);
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+
+        .secondary-right a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            transition: 0.6s;
+            text-decoration: none;
+        }
+
+        .contact-message span {
+            font-weight: bold;
+        }
+
+        .contact-message a {
+            color: #ffd;
+            font-weight: 600;
+            text-decoration: none;
+            /* text-decoration: underline; */
+            transition: 0.6s;
+        }
+
+        .contact-message a:hover {
+            color: rgb(255, 166, 0);
+            transition: 0.6s;
+        }
+
+        header.navbar {
+            background: var(--color-secondary);
+            box-shadow: 0 2px 10px rgb(0 0 0 / 34%);
+            position: relative;
+            z-index: 1000;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .navbar-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        nav.desktop-menu {
+            flex: 1;
+            margin: 0 2rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0%;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s, left 0.3s;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-menu li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .cta-button {
+            background: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: 0.6s;
+        }
+
+        .mobile-menu {
+            position: absolute;
+            display: none;
+            width: 100%;
+            background: var(--color-secondary);
+            flex-direction: column;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.6s;
+        }
+
+        .mobile-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .mobile-menu li a {
+            font-size: 1rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu li a:hover {
+            color: var(--color-accent);
+        }
+
+        /* slide */
+
+        .swiper {
+            width: 100%;
+            height: 80vh;
+        }
+
+        .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 10%;
+        }
+
+        .slide-content {
+            /* max-width: 500px; */
+            color: white;
+            text-align: right;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            position: absolute;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            align-items: stretch;
+            background: #66370069;
+            width: 50%;
+            right: 0%;
+            padding: 10px;
+            /* text-align: center; */
+        }
+
+        .swiper-slide-active .slide-content {
+            opacity: 1;
+        }
+
+        .slide-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .swiper-pagination-bullets {
+            bottom: 30px !important;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: rgba(255, 255, 255, 0.6);
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
+        }
+
+
+        /* services */
+        .services h2 {
+            position: relative;
+            right: 50px;
+            top: 30px;
+            padding: 6px;
+            width: max-content;
+            border-left: 2px solid #663700;
+            border-bottom: 2px solid #663700;
+            border-radius: 15px;
+        }
+
+        .services-section {
+            background-image: url("https://ilaw.ae/wp-content/uploads/2022/10/bg-02.jpg");
+            padding: 4rem 2rem;
+            /* background: var(--color-bg); */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            padding: 6px;
+            color: var(--color-primary);
+            border-left: 2px solid #663700;
+            border-bottom: 2px solid #663700;
+            border-radius: 15px;
+            width: max-content;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        /* .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: var(--color-accent);
+        } */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .service-card {
+            background: var(--color-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--color-primary);
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: scale(1.02);
+        }
+
+        .service-box img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .overlay-text {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(102, 55, 0, 0.85), transparent 70%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .service-box:hover .overlay-text {
+            opacity: 1;
+        }
+
+        .overlay-text h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .services-more-button {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                transition: 0.6s;
+            }
+
+            .secondary-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .slide-content {
+                width: 100%;
+                background: #6636003a;
+                /* padding: 0; */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="secondary-bar">
+        <div class="secondary-left">
+            <div class="working-hours">
+                <i class="fas fa-clock"></i>
+                <span>مواعيد العمل: 8 صباحًا - 6 مساءً</span>
+            </div>
+        </div>
+        <div class="secondary-center">
+            <div class="contact-message">
+                <span>خدمات قانونية مُنجزة بسرعة وبأقل تكلفة</span>
+                <a href="tel:+97141234567">اتصل بنا: +97141234567</a>
+            </div>
+        </div>
+        <div class="secondary-right">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">EN</a>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo"><span>AL MUBASHERI</span></a>
+            <nav class="desktop-menu">
+                <ul class="nav-menu">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">خبراتنا</a></li>
+                    <li><a href="#">المدونة</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-button">احجز استشارة</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <ul class="nav-menu-mobile" style="list-style: none;">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">خدماتنا</a></li>
+                <li><a href="#">خبراتنا</a></li>
+                <li><a href="#">المدونة</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+                <li style="text-align: center;"><a href="#" class="cta-button" style="color: #fff;">احجز استشارة</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"
+                style="background-image: url('https://salehbalharethlaw.com/wp-content/uploads/2024/09/IMG-20240925-WA0009.jpg.webp'); background-size: cover;">
+                <div class="slide-content">
+                    <h1>مكتب المباشري للمحاماة</h1>
+                    <p>نقدّم خدمات قانونية متميزة في مختلف التخصصات.</p>
+                </div>
+            </div>
+            <div class="swiper-slide"
+                style="background-image: url('https://img.pikbest.com/wp/202345/team-group-the-of-lawyers-in-suits-posing-for-a-picture_9575955.jpg!w700wp'); background-size: cover;">
+                <div class="slide-content">
+                    <h1>فريق من المحامين المحترفين</h1>
+                    <p>نساعدك في اتخاذ القرار القانوني الصحيح بثقة.</p>
+                </div>
+            </div>
+            <div class="swiper-slide"
+                style="background-image: url('https://nohoudh-center.com/sites/default/files/styles/large_16_9/public/2020-04/4-aldalt-alqdayyt-waldalt-altarykhyt.jpg?itok=Ww8Q-DDM'); background-size: cover;">
+                <div class="slide-content">
+                    <h1>العدالة هدفنا</h1>
+                    <p>نلتزم بالدفاع عن حقوقك بكل احترافية ومصداقية.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
+
+                <!-- خدمة 1 -->
+                <div class="service-box">
+                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/مراجعة-العقود.webp" alt="الخدمة 1">
+                    <div class="overlay-text">
+                        <h3>الاستشارات القانونية</h3>
+                    </div>
+                </div>
+
+                <!-- خدمة 2 -->
+                <div class="service-box">
+                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/الخدمات-القانونية-الخاصة-بالملكية-الفكرية.webp"
+                        alt="الخدمة 2">
+                    <div class="overlay-text">
+                        <h3>التقاضي أمام المحاكم</h3>
+                    </div>
+                </div>
+
+                <!-- خدمة 3 -->
+                <div class="service-box">
+                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/التحكيم-1.webp" alt="الخدمة 3">
+                    <div class="overlay-text">
+                        <h3>صياغة العقود والاتفاقيات</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-more-button">
+                <a href="services.html" class="cta-button">عرض جميع الخدمات</a>
+            </div>
+        </div>
+    </section>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            effect: 'fade',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            rtl: true
+        });
+    </script>
+    <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            loader.classList.add("hide");
+            setTimeout(() => { loader.style.display = "none"; }, 500);
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById("mobile-menu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+</body>
+
+</html>
