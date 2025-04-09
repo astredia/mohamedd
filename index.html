@@ -15,17 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-
     <style>
         :root {
             --color-primary: #663700;
             --color-secondary: #fff;
             --color-accent: #7d5526;
             --color-bg: #f9f9f9;
-            /* --color-primary: #47291f;
-            --color-secondary: #fff;
-            --color-accent: #5f2b20;
-            --color-bg: #f9f9f9; */
         }
 
         * {
@@ -129,7 +124,7 @@
         }
 
         .secondary-left .working-hours i {
-            color: var(--color-accent);
+            color: var(--color-secondary);
             margin-left: 0.3rem;
         }
 
@@ -160,13 +155,11 @@
             color: #ffd;
             font-weight: 600;
             text-decoration: none;
-            /* text-decoration: underline; */
             transition: 0.6s;
         }
 
         .contact-message a:hover {
             color: rgb(255, 166, 0);
-            transition: 0.6s;
         }
 
         header.navbar {
@@ -274,6 +267,7 @@
             font-size: 1.5rem;
             color: var(--color-primary);
             transition: 0.6s;
+            cursor: pointer;
         }
 
         .mobile-menu {
@@ -284,11 +278,16 @@
             flex-direction: column;
             padding: 1rem 2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: 0.6s;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
         }
 
         .mobile-menu li {
             margin: 0.5rem 0;
+            list-style: none;
         }
 
         .mobile-menu li a {
@@ -323,24 +322,11 @@
         }
 
         .slide-content {
-            /* max-width: 500px; */
+            max-width: 500px;
             color: white;
             text-align: right;
             animation: fadeInUp 1s ease forwards;
             opacity: 0;
-            position: absolute;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: center;
-            align-items: stretch;
-            background: #66370069;
-            width: 50%;
-            right: 0%;
-            padding: 10px;
-            /* text-align: center; */
         }
 
         .swiper-slide-active .slide-content {
@@ -382,143 +368,843 @@
             background-color: #fff;
         }
 
-
         /* services */
-        .services h2 {
-            position: relative;
-            right: 50px;
-            top: 30px;
-            padding: 6px;
-            width: max-content;
-            border-left: 2px solid #663700;
-            border-bottom: 2px solid #663700;
-            border-radius: 15px;
-        }
-
+        /* أنماط قسم الخدمات الجديدة */
         .services-section {
-            background-image: url("https://ilaw.ae/wp-content/uploads/2022/10/bg-02.jpg");
-            padding: 4rem 2rem;
-            /* background: var(--color-bg); */
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0e6d9 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .container {
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%237d5526" opacity="0.05"><path d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>');
+            background-size: contain;
+            z-index: 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .section-header:hover .section-title::after {
+            transform: scaleX(1);
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            position: relative;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: linear-gradient(to top, rgba(102, 55, 0, 0.9) 0%, transparent 100%);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .service-item:hover .service-overlay {
+            transform: translateY(0);
+        }
+
+        .service-item:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .service-description {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.2s;
+            line-height: 1.6;
+        }
+
+        .service-item:hover .service-title,
+        .service-item:hover .service-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .services-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(125, 85, 38, 0.3);
+        }
+
+        .services-cta:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(125, 85, 38, 0.4);
+        }
+
+        /* أنماط القسم الإعلاني */
+        .cta-section {
+            position: relative;
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(102, 55, 0, 0.9), rgba(102, 55, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-ad {
+            padding: 1rem 2.5rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-button-outline {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-button-ad:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .cta-button-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* أنماط قسم عن المكتب المعدل */
+        .about-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom right, #f9f9f9, #fff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 38%;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%237d5526" opacity="0.05"><path d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>');
+            background-size: contain;
+            z-index: 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content {
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .about-content.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            transform: rotate(-3deg);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 55, 0, 0.1), transparent);
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+
+
+        /* قسم خبراتنا */
+        .expertise-section {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+            /* لون الخلفية قابل للتعديل */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            padding: 6px;
-            color: var(--color-primary);
-            border-left: 2px solid #663700;
-            border-bottom: 2px solid #663700;
-            border-radius: 15px;
-            width: max-content;
+        /* عناوين القسم */
+        .expertise-header {
             margin-bottom: 3rem;
+        }
+
+        .expertise-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            /* لوّنها بلون يناسبك */
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .expertise-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0.5rem auto;
+        }
+
+        /* الشبكة التي تحتوي على الخبرات */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        /* البطاقة الواحدة */
+        .expertise-item {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #ddd;
+            /* حواف منقطة أو يمكنك تغييرها */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: #fff;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* التأثير عند الوقوف بالماوس */
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-accent);
+            /* إظهار تمييز باللون الأساسي */
+        }
+
+        /* أيقونة الخبرة */
+        .expertise-icon {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* النص أسفل الأيقونة */
+        .expertise-name {
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* تأثيرات أنيميشن عند ظهور العنصر في الشاشة (اختياري) */
+        .expertise-item {
+            /* opacity: 60; */
+            transform: translateY(20px);
+        }
+
+        /* كلاس يظهر العنصر */
+        .expertise-item.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .why-choose-section {
+            position: relative;
+            padding: 6rem 2rem;
+            background: linear-gradient(45deg, #f9f9f9, #fff);
+            overflow: hidden;
+        }
+
+        /* النمط الهندسي في الخلفية */
+        .geometric-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #e7e7e76e;
+        }
+
+        /* الأيقونات العائمة */
+        .floating-law-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-law-icons i {
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(102, 55, 0, 0.1);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .floating-law-icons i:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-law-icons i:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-law-icons i:nth-child(3) {
+            bottom: 20%;
+            left: 25%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+
+        /* الحاوية الرئيسية للقسم */
+        .why-choose-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        /* .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            right: 50%;
-            transform: translateX(50%);
-            width: 100px;
-            height: 3px;
-            background: var(--color-accent);
-        } */
+        /* شبكة البطاقات */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
 
-        .services-grid {
+        /* تصميم البطاقة (الكارد) */
+        .reason-card {
+            position: relative;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* أيقونة السبب مع الشكل السداسي */
+        .reason-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: rotateHexagon 8s linear infinite;
+        }
+
+        .hexagon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--color-accent);
+            clip-path: none;
+            border-radius: 30px;
+            animation: rotateHexagon 8s linear infinite;
+        }
+
+        @keyframes rotateHexagon {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .reason-icon i {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            font-size: 2rem;
+            line-height: 80px;
+            /* لضمان توسيط الأيقونة عمودياً داخل الشكل */
+        }
+
+        /* نصوص البطاقة */
+        .reason-card h3 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .reason-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* تأثير hover إضافي */
+        .hover-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(rgba(102, 55, 0, 0.1), transparent);
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .reason-card:hover .hover-effect {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        /* أنماط قسم أشهر القضايا */
+        .cases-section {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .cases-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-card {
-            background: var(--color-secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
+        .case-card {
+            border-radius: 15px;
+            overflow: hidden;
+/*             width: 500px; */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
-        .service-card:hover {
+        .case-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--color-accent);
+        .case-image {
+            height: 250px;
+            background-size: cover;
+            position: relative;
+        }
+
+        .case-content {
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .case-result {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* أنماط قسم آراء العملاء */
+        .testimonials-section {
+            padding: 4rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+        }
+
+        .client-info {
+            text-align: center;
             margin-bottom: 1rem;
         }
 
-        .service-card h3 {
-            color: var(--color-primary);
-            margin: 1rem 0;
-            font-size: 1.5rem;
+        .client-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
         }
 
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+        .rating {
+            color: #ffc107;
+            margin-top: 1rem;
         }
 
-        .service-box {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        /* أنماط قسم الباقات */
+        .pricing-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(45deg, #f9f9f9, #fff);
         }
 
-        .service-box:hover {
-            transform: scale(1.02);
-        }
-
-        .service-box img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .overlay-text {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(102, 55, 0, 0.85), transparent 70%);
-            color: white;
+        .pricing-cards {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            padding: 1rem;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-box:hover .overlay-text {
-            opacity: 1;
+        .price-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
         }
 
-        .overlay-text h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        .price-card:hover {
+            transform: translateY(-10px);
         }
 
-        .services-more-button {
+        .price-card.premium {
+            transform: scale(1.05);
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .price-card.premium .price {
+            color: #fff;
+        }
+
+        .price-header {
             text-align: center;
-            margin-top: 2rem;
+            margin-bottom: 1.5rem;
         }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features li {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-cta {
+            display: block;
+            text-align: center;
+            background: var(--color-accent);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .price-cta:hover {
+            background: var(--color-primary);
+        }
+
+        /* أنماط الفوتر */
+        .site-footer {
+            background: var(--color-primary);
+            color: #fff;
+            padding: 4rem 2rem 0;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-col ul{
+            list-style: none;
+        }
+        .footer-col ul a{
+            text-decoration: none;
+            color: #fff;
+            transition: 0.4s;
+        }
+        .footer-col ul a:hover{
+            color: #a76f4e;
+            transition: 0.4s;
+        }
+        
 
         @media (max-width: 768px) {
             .nav-menu {
@@ -527,7 +1213,6 @@
 
             .mobile-menu-toggle {
                 display: block;
-                transition: 0.6s;
             }
 
             .secondary-bar {
@@ -536,10 +1221,57 @@
                 text-align: center;
             }
 
-            .slide-content {
+            .services-section {
+                padding: 3rem 1rem;
+            }
+
+            .services-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                height: 300px;
+            }
+
+            .about-container {
+                flex-direction: column;
+                display: flex;
+            }
+
+            .about-image {
                 width: 100%;
-                background: #6636003a;
-                /* padding: 0; */
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-text {
+                font-size: 1rem;
+            }
+
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .why-choose-section {
+                padding: 4rem 1rem;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -590,7 +1322,7 @@
             </button>
         </div>
         <div id="mobile-menu" class="mobile-menu">
-            <ul class="nav-menu-mobile" style="list-style: none;">
+            <ul>
                 <li><a href="#">الرئيسية</a></li>
                 <li><a href="#">من نحن</a></li>
                 <li><a href="#">خدماتنا</a></li>
@@ -630,42 +1362,463 @@
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-    <section class="services-section">
-        <div class="container">
-            <h2 class="section-title">خدماتنا</h2>
-            <div class="services-grid">
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 class="section-title">خدماتنا القانونية</h2>
+                <p class="section-subtitle">نقدم حلولاً قانونية متكاملة تلبي احتياجاتكم بدقة واحترافية</p>
+            </div>
 
+            <div class="services-showcase">
                 <!-- خدمة 1 -->
-                <div class="service-box">
-                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/مراجعة-العقود.webp" alt="الخدمة 1">
-                    <div class="overlay-text">
-                        <h3>الاستشارات القانونية</h3>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="الاستشارات القانونية" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">الاستشارات القانونية</h3>
+                        <p class="service-description">تقديم استشارات قانونية متخصصة في كافة المجالات مع ضمان السرية
+                            التامة والمتابعة المستمرة</p>
                     </div>
                 </div>
 
                 <!-- خدمة 2 -->
-                <div class="service-box">
-                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/الخدمات-القانونية-الخاصة-بالملكية-الفكرية.webp"
-                        alt="الخدمة 2">
-                    <div class="overlay-text">
-                        <h3>التقاضي أمام المحاكم</h3>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="التمثيل القضائي" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">التمثيل القضائي</h3>
+                        <p class="service-description">تمثيل العملاء أمام كافة المحاكم والجهات القضائية باحترافية عالية
+                            وخبرة ممتدة</p>
                     </div>
                 </div>
 
                 <!-- خدمة 3 -->
-                <div class="service-box">
-                    <img src="https://ilaw.ae/wp-content/uploads/2024/11/التحكيم-1.webp" alt="الخدمة 3">
-                    <div class="overlay-text">
-                        <h3>صياغة العقود والاتفاقيات</h3>
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="صياغة العقود" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">صياغة العقود</h3>
+                        <p class="service-description">صياغة ومراجعة العقود القانونية بكافة أنواعها مع ضمان الحقوق وتجنب
+                            الثغرات القانونية</p>
                     </div>
                 </div>
             </div>
 
-            <div class="services-more-button">
-                <a href="services.html" class="cta-button">عرض جميع الخدمات</a>
+            <div class="cta-container">
+                <a href="services.html" class="services-cta">عرض جميع الخدمات</a>
             </div>
         </div>
     </section>
+
+    <!-- القسم الإعلاني -->
+    <section class="cta-section">
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2 class="cta-title">لا تترك مستقبلك القانوني للصدفة!</h2>
+            <p class="cta-text">
+                استشر خبراء القانون الأكفاء الآن واحصل على حلول عملية وفعّالة<br>
+                نضمن لك سرية تامة ونتائج ملموسة بأسعار تنافسية
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button-ad">اتصل بنا الآن</a>
+                <a href="#services" class="cta-button-outline">تعرف على خدماتنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم عن المكتب -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="2.jpeg" alt="فريق العمل">
+            </div>
+            <div class="about-content">
+                <h2 class="about-title">مكتب المباشري للمحاماة</h2>
+                <p class="about-text">
+                    نعتبر من المكاتب الرائدة في مجال المحاماة الاستشارية والقضائية،<br>
+                    نقدم حلولاً قانونية مبتكرة تعكس عمق خبراتنا وتميز فريقنا المحترف.
+                </p>
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <div class="achievement-number" data-count="2500">0</div>
+                        <div class="achievement-text">قضية ناجحة</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number" data-count="98">0</div>
+                        <div class="achievement-text">رضا العملاء</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number" data-count="15">0</div>
+                        <div class="achievement-text">سنة خبرة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- قسم خبراتنا -->
+    <section class="expertise-section" id="experience">
+        <div class="expertise-container">
+            <header class="expertise-header">
+                <h2 class="expertise-title">خبراتنا</h2>
+                <p class="expertise-subtitle">رؤية احترافية قانونية وشغف لنشر العدل</p>
+            </header>
+
+            <div class="expertise-grid">
+                <!-- عنصر خبرة رقم 1 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- مثال على رمز SVG لقانون الأحوال الشخصية -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M20 30H44M20 38H44" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="32" cy="24" r="3" fill="#663700" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">قانون الأحوال الشخصية</h3>
+                </div>
+
+                <!-- عنصر خبرة رقم 2 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- قانون المعاملات التجارية -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M22 26H42V38H22V26Z" stroke="#663700" stroke-width="2" fill="none" />
+                            <path d="M28 22V26M36 22V26" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">قانون المعاملات التجارية</h3>
+                </div>
+
+                <!-- عنصر خبرة رقم 3 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- قانون الجنائي -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M26 20H38V36H26V20Z" stroke="#663700" stroke-width="2" fill="none" />
+                            <path d="M26 28H16M38 28H48" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">القانون الجنائي</h3>
+                </div>
+
+                <!-- عنصر خبرة رقم 4 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- قانون الإجراءات -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M20 32H44" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                            <path d="M32 20V44" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">قانون الإجراءات</h3>
+                </div>
+
+                <!-- عنصر خبرة رقم 5 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- قانون الشركات -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M25 25H39V39H25V25Z" stroke="#663700" stroke-width="2" fill="none" />
+                            <path d="M32 18V25M32 39V46" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">القانون التجاري</h3>
+                </div>
+
+                <!-- عنصر خبرة رقم 6 -->
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <!-- قانون الأسرة -->
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="#663700"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="none" stroke="#663700" stroke-width="2" />
+                            <path d="M22 34H42M32 24V34" stroke="#663700" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="expertise-name">قانون الأسرة</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- قسم لماذا تختار AL MUBASHERI -->
+    <section class="why-choose-section">
+        <!-- نمط هندسي متحرك في الخلفية -->
+        <div class="geometric-pattern"></div>
+
+        <!-- أيقونات قانونية عائمة -->
+        <div class="floating-law-icons">
+            <i class="fas fa-balance-scale"></i>
+            <i class="fas fa-gavel"></i>
+            <i class="fas fa-book"></i>
+        </div>
+
+        <div class="why-choose-container">
+            <h2 class="section-title">لماذا تختار مكتب المباشري؟</h2>
+
+            <div class="reasons-grid">
+                <!-- سبب 1 -->
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <div class="hexagon" style="background: #b29a7f; width: 105%; height: 105%; rotate: 45deg;">
+                        </div>
+                        <div class="hexagon"></div>
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>حماية قانونية شاملة</h3>
+                    <p>نقدم حلولاً استباقية لحماية مصالحك قبل وقوع النزاعات</p>
+                    <div class="hover-effect"></div>
+                </div>
+                <!-- سبب 2 -->
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <div class="hexagon" style="background: #b29a7f; width: 105%; height: 105%; rotate: 45deg;">
+                        </div>
+                        <div class="hexagon"></div>
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>خبراء متخصصون</h3>
+                    <p>فريق عمل مؤهل من أفضل المحامين المتخصصين في مختلف المجالات</p>
+                    <div class="hover-effect"></div>
+                </div>
+                <!-- سبب 3 -->
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <div class="hexagon" style="background: #b29a7f; width: 105%; height: 105%; rotate: 45deg;">
+                        </div>
+                        <div class="hexagon"></div>
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>سرعة في الإنجاز</h3>
+                    <p>إجراءات سريعة ودقيقة مع الحفاظ على أعلى معايير الجودة</p>
+                    <div class="hover-effect"></div>
+                </div>
+                <!-- سبب 4 -->
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <div class="hexagon" style="background: #b29a7f; width: 105%; height: 105%; rotate: 45deg;">
+                        </div>
+                        <div class="hexagon"></div>
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>شفافية مطلقة</h3>
+                    <p>متابعة مستمرة وتقارير دورية عن تطورات القضايا</p>
+                    <div class="hover-effect"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أشهر القضايا -->
+    <section class="cases-section">
+        <div class="section-header">
+            <h2 class="section-title">أشهر القضايا</h2>
+            <p class="section-subtitle">حالات قانونية بارزة حققنا فيها نتائج متميزة</p>
+        </div>
+
+        <div class="cases-grid">
+            <!-- قضية 1 -->
+            <div class="case-card">
+                <div class="case-image"
+                    style="background-image: url('https://ilaw.ae/wp-content/uploads/2024/11/%D9%81%D8%AE-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%B1%D9%8A-400x350.webp'); background-size: cover;">
+                </div>
+                <div class="case-content">
+                    <h3>قضية تعويضات تجارية</h3>
+                    <div class="case-meta">
+                        <span>المجال: القانون التجاري</span>
+                        <span>المدة: 8 أشهر</span>
+                    </div>
+                    <p>حققنا تعويضاً قياسياً بلغ 5 ملايين درهم لعميل تعرض لخسائر تجارية غير مشروعة</p>
+                    <div class="case-result success">نتيجة: فوز كامل</div>
+                </div>
+            </div>
+
+            <!-- قضية 2 -->
+            <div class="case-card">
+                <div class="case-image"
+                    style="background-image: url('https://ilaw.ae/wp-content/uploads/2024/11/%D9%81%D9%8A-%D9%82%D9%84%D8%A8-%D8%A7%D9%84%D8%A7%D9%86%D9%81%D8%B5%D8%A7%D9%84-400x350.webp'); background-size: cover;">
+                </div>
+                <div class="case-content">
+                    <h3>قضية أحوال شخصية</h3>
+                    <div class="case-meta">
+                        <span>المجال: الأحوال الشخصية</span>
+                        <span>المدة: 14 شهر</span>
+                    </div>
+                    <p>حفظ حقوق الأطفال المالية والوصاية الشرعية في قضية طلاق معقدة</p>
+                    <div class="case-result success">نتيجة: فوز كامل</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم آراء العملاء -->
+    <section class="testimonials-section">
+        <div class="testimonials-swiper">
+            <div class="swiper-wrapper">
+                <!-- رأي 1 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="client-info">
+                            <img src="https://ilaw.ae/wp-content/uploads/2024/11/2.webp" alt="عميل">
+                            <h4>أحمد السعدي</h4>
+                            <span>رجل أعمال</span>
+                        </div>
+                        <p>"المهنية والسرعة في إنهاء الإجراءات القانونية كانت فوق التوقعات، شكراً لفريق المباشري"</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- قسم الباقات -->
+    <section class="pricing-section">
+        <div class="section-header">
+            <h2 class="section-title">باقات الخدمات</h2>
+            <p class="section-subtitle">اختر الباقة المناسبة لاحتياجاتك القانونية</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- باقة أساسية -->
+            <div class="price-card basic">
+                <div class="price-header">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="price">5,000<span>درهم/شهر</span></div>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i>استشارات قانونية شهرية</li>
+                    <li><i class="fas fa-check"></i>مراجعة 3 عقود</li>
+                    <li><i class="fas fa-times"></i>تمثيل قضائي</li>
+                </ul>
+                <a href="#" class="price-cta">اختر الباقة</a>
+            </div>
+
+            <!-- باقة مميزة (مميزة) -->
+            <div class="price-card premium">
+                <div class="price-header">
+                    <h3>الباقة المميزة</h3>
+                    <div class="price">15,000<span>درهم/شهر</span></div>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i>استشارات غير محدودة</li>
+                    <li><i class="fas fa-check"></i>تمثيل في محكمتين</li>
+                    <li><i class="fas fa-check"></i>صياغة 10 عقود</li>
+                </ul>
+                <a href="#" class="price-cta">اختر الباقة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="site-footer">
+        <div class="footer-columns">
+            <div class="footer-col about">
+                <h4>عن المكتب</h4>
+                <p>مكتب رائد في تقديم الحلول القانونية منذ 2010</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>اتصل بنا</h4>
+                <p><i class="fas fa-map-marker"></i> دبي، الإمارات</p>
+                <p><i class="fas fa-phone"></i> +97141234567</p>
+                <p><i class="fas fa-envelope"></i> info@almubasheri.com</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 AL MUBASHERI. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+    <script>
+        // تهيئة سلايدر آراء العملاء
+        const testimonialSwiper = new Swiper('.testimonials-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                }
+            }
+        });
+    </script>
+    <script>
+        // العدادات التلقائية
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // تفعيل العدادات عند التمرير
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelector('.about-content').classList.add('visible');
+
+                    document.querySelectorAll('.achievement-number').forEach(item => {
+                        const target = +item.getAttribute('data-count');
+                        animateValue(item, 0, target, 2000);
+                    });
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.about-section'));
+
+        // تأثير التمرير الناعم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -683,8 +1836,7 @@
             },
             rtl: true
         });
-    </script>
-    <script>
+
         window.addEventListener("load", function () {
             const loader = document.getElementById("loader");
             loader.classList.add("hide");
@@ -693,7 +1845,7 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById("mobile-menu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+            menu.classList.toggle("active");
         }
     </script>
 </body>
