@@ -1995,166 +1995,113 @@
             <a href="#" class="logo"><span>AL MUBASHERI</span></a>
             <nav class="desktop-menu">
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#expertise">Our Expertise</a></li>
-                    <li><a href="#cases">Cases</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">خبراتنا</a></li>
+                    <li><a href="#">المدونة</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
                 </ul>
             </nav>
-            <a href="#contact" class="cta-button">Book a consultation</a>
+            <a href="#" class="cta-button">احجز استشارة</a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
-    <div class="mobile-menu">
-        <div class="mobile-menu-header">
-            <div class="logo">AL MUBASHERI</div>
-            <button class="mobile-menu-close" onclick="toggleMobileMenu()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <ul class="mobile-menu-list">
-            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
-            <li><a href="#services" onclick="toggleMobileMenu()">Our Services</a></li>
-            <li><a href="#about" onclick="toggleMobileMenu()">About Us</a></li>
-            <li><a href="#expertise" onclick="toggleMobileMenu()">Our Expertise</a></li>
-            <li><a href="#cases" onclick="toggleMobileMenu()">Cases</a></li>
-            <li><a href="#contact" onclick="toggleMobileMenu()">Contact Us</a></li>
-        </ul>
-        <div class="mobile-menu-cta">
-            <a href="#contact" class="cta-button" onclick="toggleMobileMenu()">Book a consultation</a>
+        <div id="mobile-menu" class="mobile-menu">
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">خدماتنا</a></li>
+                <li><a href="#">خبراتنا</a></li>
+                <li><a href="#">المدونة</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+                <li style="text-align: center;"><a href="#" class="cta-button" style="color: #fff;">احجز استشارة</a>
+                </li>
+            </ul>
         </div>
     </div>
 
     <!-- Hero Slider -->
     <section id="home" class="hero-slider swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('asstes/images/1.jpg');">
+            <div class="swiper-slide"
+                style="background-image: url('https://salehbalharethlaw.com/wp-content/uploads/2024/09/IMG-20240925-WA0009.jpg.webp'); background-size: cover;">
                 <div class="slide-content">
-                    <h1>Al Mubasheri Advocates & Legal Consultancy</h1>
-                    <p>Legal Trust... with a Distinct Emirati Excellence</p>
-                    <p>Trusted Legal Solutions with a Distinct Emirati Touch</p>
-                    <a href="#services" class="slide-button">Explore Our Services</a>
+                    <h1>مكتب المباشري للمحاماة</h1>
+                    <p>نقدّم خدمات قانونية متميزة في مختلف التخصصات.</p>
                 </div>
             </div>
-            <div class="swiper-slide" style="background-image: url('asstes/images/2.jpg');">
+            <div class="swiper-slide"
+                style="background-image: url('https://img.pikbest.com/wp/202345/team-group-the-of-lawyers-in-suits-posing-for-a-picture_9575955.jpg!w700wp'); background-size: cover;">
                 <div class="slide-content">
-                    <h1>A Team of Professional Lawyers</h1>
-                    <p>We help you make the right legal decision with confidence and over 15 years of experience</p>
-                    <a href="#about" class="slide-button">Learn More About Us</a>
+                    <h1>فريق من المحامين المحترفين</h1>
+                    <p>نساعدك في اتخاذ القرار القانوني الصحيح بثقة.</p>
                 </div>
             </div>
-            <div class="swiper-slide" style="background-image: url('asstes/images/3.gif');">
+            <div class="swiper-slide"
+                style="background-image: url('https://nohoudh-center.com/sites/default/files/styles/large_16_9/public/2020-04/4-aldalt-alqdayyt-waldalt-altarykhyt.jpg?itok=Ww8Q-DDM'); background-size: cover;">
                 <div class="slide-content">
-                    <h1>Justice is Our Goal</h1>
-                    <p>We are committed to defending your rights with professionalism and integrity to achieve the best
-                        results</p>
-                    <a href="#contact" class="slide-button">Contact Us</a>
+                    <h1>العدالة هدفنا</h1>
+                    <p>نلتزم بالدفاع عن حقوقك بكل احترافية ومصداقية.</p>
                 </div>
             </div>
         </div>
         <div class="swiper-pagination"></div>
-        <div class="scroll-down" onclick="scrollToSection('about')">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-
-    <!-- Services Section -->
-    <section id="services" class="services-section">
+    </div>
+    <section class="services-section" id="services">
         <div class="services-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Our Legal Services</h2>
-                <p class="section-subtitle">We provide comprehensive legal solutions tailored to meet your needs with
-                    precision and professionalism across various legal fields.</p>
+            <div class="section-header">
+                <h2 class="section-title">خدماتنا القانونية</h2>
+                <p class="section-subtitle">نقدم حلولاً قانونية متكاملة تلبي احتياجاتكم بدقة واحترافية</p>
             </div>
 
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-inner">
-                        <div class="service-front"
-                            style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
-                            <div class="service-front-content">
-                                <h3>Legal Consultations</h3>
-                                <p>Specialized consultations in all legal fields</p>
-                            </div>
-                        </div>
-                        <div class="service-back">
-                            <div class="service-icon">
-                                <i class="fas fa-gavel"></i>
-                            </div>
-                            <h3>Legal Consultations</h3>
-                            <p>We offer specialized legal consultations in all fields, ensuring full confidentiality and
-                                continuous follow-up.</p>
-                            <a href="#contact" class="cta-button">Book a consultation</a>
-                        </div>
+            <div class="services-showcase">
+                <!-- خدمة 1 -->
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="الاستشارات القانونية" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">الاستشارات القانونية</h3>
+                        <p class="service-description">تقديم استشارات قانونية متخصصة في كافة المجالات مع ضمان السرية
+                            التامة والمتابعة المستمرة</p>
                     </div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-inner">
-                        <div class="service-front"
-                            style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
-                            <div class="service-front-content">
-                                <h3>Litigation & Court Representation</h3>
-                                <p>Representation before all courts</p>
-                            </div>
-                        </div>
-                        <div class="service-back">
-                            <div class="service-icon">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <h3>Litigation & Court Representation</h3>
-                            <p>Professional representation of clients before all courts and judicial authorities with
-                                extensive experience.</p>
-                            <a href="#contact" class="cta-button">Book a consultation</a>
-                        </div>
+                <!-- خدمة 2 -->
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="التمثيل القضائي" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">التمثيل القضائي</h3>
+                        <p class="service-description">تمثيل العملاء أمام كافة المحاكم والجهات القضائية باحترافية عالية
+                            وخبرة ممتدة</p>
                     </div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-inner">
-                        <div class="service-front"
-                            style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
-                            <div class="service-front-content">
-                                <h3>Contract Drafting</h3>
-                                <p>Drafting and reviewing legal contracts</p>
-                            </div>
-                        </div>
-                        <div class="service-back">
-                            <div class="service-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <h3>Contract Drafting</h3>
-                            <p>Drafting and reviewing all types of legal contracts to ensure rights are protected and
-                                legal loopholes are avoided.</p>
-                            <a href="#contact" class="cta-button">Book a consultation</a>
-                        </div>
+                <!-- خدمة 3 -->
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="صياغة العقود" class="service-image">
+                    <div class="service-overlay">
+                        <h3 class="service-title">صياغة العقود</h3>
+                        <p class="service-description">صياغة ومراجعة العقود القانونية بكافة أنواعها مع ضمان الحقوق وتجنب
+                            الثغرات القانونية</p>
                     </div>
                 </div>
             </div>
 
-            <div class="services-cta" data-aos="fade-up">
-                <a href="#contact" class="cta-button">Get a Legal Consultation Now</a>
+            <div class="cta-container">
+                <a href="services.html" class="services-cta">عرض جميع الخدمات</a>
             </div>
         </div>
     </section>
 
-
-    <!-- CTA Section -->
+    <!-- القسم الإعلاني -->
     <section class="cta-section">
         <div class="cta-overlay"></div>
-        <div class="cta-content" data-aos="fade-up">
-            <h2 class="cta-title">Don’t Leave Your Legal Future to Chance!</h2>
+        <div class="cta-content">
+            <h2 class="cta-title">لا تترك مستقبلك القانوني للصدفة!</h2>
             <p class="cta-text">
                 Consult our expert legal team today and get practical, effective solutions.<br>
                 We guarantee full confidentiality and tangible results at competitive rates.
@@ -2169,25 +2116,14 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="about-container">
-            <div class="about-image" data-aos="fade-right">
-                <img src="asstes/images/the_owner.jpeg" alt="Our Team">
+            <div class="about-image">
+                <img src="2.jpeg" alt="فريق العمل">
             </div>
-            <div class="about-content" data-aos="fade-left">
-                <h2 class="about-title">Al Mubasheri Advocates & Legal Consultancy</h2>
+            <div class="about-content">
+                <h2 class="about-title">مكتب المباشري للمحاماة</h2>
                 <p class="about-text">
-                    Al Mubasheri Advocates & Legal Consultancy is a leading provider of legal services in the UAE,
-                    offering exceptional
-                    advisory and litigation services. Established in 2010 in Dubai, we have built a distinguished
-                    reputation by consistently delivering high-quality legal support and innovative solutions. With over
-                    24 years of legal experience, we specialize in addressing complex legal challenges while
-                    prioritizing our clients' best interests.
-                </p>
-                <p class="about-text">
-                    We are dedicated to upholding the highest standards of professionalism and legal ethics. Our firm’s
-                    team of experienced attorneys and legal consultants work closely with both corporate and private
-                    clients, helping them navigate the intricacies of UAE law and international regulations. We strive
-                    to provide tailored solutions that exceed client expectations, ensuring efficient and professional
-                    service at all times.
+                    نعتبر من المكاتب الرائدة في مجال المحاماة الاستشارية والقضائية،<br>
+                    نقدم حلولاً قانونية مبتكرة تعكس عمق خبراتنا وتميز فريقنا المحترف.
                 </p>
                 <div class="achievements-grid">
                     <div class="achievement-item" data-aos="zoom-in" data-aos-delay="100">
@@ -2198,24 +2134,21 @@
                         <div class="achievement-number" data-count="98">0</div>
                         <div class="achievement-text">Client Satisfaction</div>
                     </div>
-                    <div class="achievement-item" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="achievement-number" data-count="24">0</div>
-                        <div class="achievement-text">Years of Experience</div>
+                    <div class="achievement-item">
+                        <div class="achievement-number" data-count="15">0</div>
+                        <div class="achievement-text">سنة خبرة</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-    <!-- Expertise Section -->
-    <section id="expertise" class="expertise-section">
+    <!-- قسم خبراتنا -->
+    <section class="expertise-section" id="experience">
         <div class="expertise-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Our Legal Expertise</h2>
-                <p class="section-subtitle">Our specializations cover all key legal areas</p>
-            </div>
+            <header class="expertise-header">
+                <h2 class="expertise-title">خبراتنا</h2>
+                <p class="expertise-subtitle">رؤية احترافية قانونية وشغف لنشر العدل</p>
+            </header>
 
             <div class="expertise-grid">
                 <!-- Expertise 1 -->
@@ -2270,7 +2203,7 @@
     </section>
 
 
-    <!-- Why Choose Us Section -->
+    <!-- قسم لماذا تختار AL MUBASHERI -->
     <section class="why-choose-section">
         <div class="geometric-pattern"></div>
         <div class="floating-law-icons">
@@ -2280,97 +2213,77 @@
         </div>
 
         <div class="why-choose-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Why Choose Al Mubashri Law Firm?</h2>
-                <p class="section-subtitle">We offer unique features that ensure you receive the best legal
-                    representation.</p>
-            </div>
+            <h2 class="section-title">لماذا تختار مكتب المباشري؟</h2>
 
             <div class="reasons-grid">
-                <div class="reason-card" data-aos="fade-up" data-aos-delay="100">
+                <!-- سبب 1 -->
+                <div class="reason-card">
                     <div class="reason-icon">
                         <i class="fas fa-user-shield"></i>
                     </div>
-                    <h3>Comprehensive Legal Protection</h3>
-                    <p>We provide proactive solutions to protect your interests before disputes arise, with continuous
-                        follow-up on all legal details.</p>
+                    <h3>حماية قانونية شاملة</h3>
+                    <p>نقدم حلولاً استباقية لحماية مصالحك قبل وقوع النزاعات</p>
                     <div class="hover-effect"></div>
                 </div>
-
-                <div class="reason-card" data-aos="fade-up" data-aos-delay="200">
+                <!-- سبب 2 -->
+                <div class="reason-card">
                     <div class="reason-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Specialized Experts</h3>
-                    <p>A qualified team of top lawyers specialized in various legal fields with over 15 years of
-                        experience.</p>
+                    <h3>خبراء متخصصون</h3>
+                    <p>فريق عمل مؤهل من أفضل المحامين المتخصصين في مختلف المجالات</p>
                     <div class="hover-effect"></div>
                 </div>
-
-                <div class="reason-card" data-aos="fade-up" data-aos-delay="300">
+                <!-- سبب 3 -->
+                <div class="reason-card">
                     <div class="reason-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Fast Execution</h3>
-                    <p>Quick and precise procedures while maintaining the highest quality standards to complete your
-                        legal matters in the shortest time.</p>
+                    <h3>سرعة في الإنجاز</h3>
+                    <p>إجراءات سريعة ودقيقة مع الحفاظ على أعلى معايير الجودة</p>
                     <div class="hover-effect"></div>
                 </div>
-
-                <div class="reason-card" data-aos="fade-up" data-aos-delay="400">
+                <!-- سبب 4 -->
+                <div class="reason-card">
                     <div class="reason-icon">
                         <i class="fas fa-hand-holding-heart"></i>
                     </div>
-                    <h3>Complete Transparency</h3>
-                    <p>Continuous updates and periodic reports on case developments with direct communication with the
-                        assigned lawyer.</p>
+                    <h3>شفافية مطلقة</h3>
+                    <p>متابعة مستمرة وتقارير دورية عن تطورات القضايا</p>
                     <div class="hover-effect"></div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Cases Section -->
-    <section id="cases" class="cases-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">Notable Cases</h2>
-            <p class="section-subtitle">Prominent legal cases in which we achieved outstanding results for our clients.
-            </p>
+    <!-- قسم أشهر القضايا -->
+    <section class="cases-section">
+        <div class="section-header">
+            <h2 class="section-title">أشهر القضايا</h2>
+            <p class="section-subtitle">حالات قانونية بارزة حققنا فيها نتائج متميزة</p>
         </div>
 
         <div class="cases-grid">
-            <div class="case-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="case-image" style="background-image: url('');"></div>
-                <div class="case-content">
-                    <h3>Commercial Compensation Case</h3>
-                    <div class="case-meta">
-                        <span>Field: Commercial Law</span>
-                        <span>Duration: 8 Months</span>
-                    </div>
-                    <p class="case-description">We secured a record compensation of 5 million AED for a client who
-                        suffered unlawful business losses due to partner violations.</p>
-                    <div class="case-result success">Result: Full Win</div>
+            <!-- قضية 1 -->
+            <div class="case-card">
+                <div class="case-image"
+                    style="background-image: url('https://ilaw.ae/wp-content/uploads/2024/11/%D9%81%D8%AE-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%B1%D9%8A-400x350.webp'); background-size: cover;">
                 </div>
-            </div>
-
-            <div class="case-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="case-image" style="background-image: url('');"></div>
                 <div class="case-content">
                     <h3>Personal Status Case</h3>
                     <div class="case-meta">
                         <span>Field: Personal Status Law</span>
                         <span>Duration: 14 Months</span>
                     </div>
-                    <p class="case-description">We preserved financial rights and legal custody of children in a complex
-                        divorce case lasting over a year.</p>
-                    <div class="case-result success">Result: Full Win</div>
+                    <p>حققنا تعويضاً قياسياً بلغ 5 ملايين درهم لعميل تعرض لخسائر تجارية غير مشروعة</p>
+                    <div class="case-result success">نتيجة: فوز كامل</div>
                 </div>
             </div>
 
-            <div class="case-card" data-aos="fade-up" data-aos-delay="300">
+            <!-- قضية 2 -->
+            <div class="case-card">
                 <div class="case-image"
-                    style="background-image: url('https://ilaw.ae/wp-content/uploads/2024/11/%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84-%D8%B9%D9%84%D9%89-%D8%AD%D9%82-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D9%81%D8%A7%D8%B9-400x350.webp');">
+                    style="background-image: url('https://ilaw.ae/wp-content/uploads/2024/11/%D9%81%D9%8A-%D9%82%D9%84%D8%A8-%D8%A7%D9%84%D8%A7%D9%86%D9%81%D8%B5%D8%A7%D9%84-400x350.webp'); background-size: cover;">
                 </div>
                 <div class="case-content">
                     <h3>Criminal Case</h3>
@@ -2378,36 +2291,26 @@
                         <span>Field: Criminal Law</span>
                         <span>Duration: 6 Months</span>
                     </div>
-                    <p class="case-description">Our client was acquitted in a complex financial crime case after
-                        presenting evidence that proved their innocence.</p>
-                    <div class="case-result success">Result: Full Win</div>
+                    <p>حفظ حقوق الأطفال المالية والوصاية الشرعية في قضية طلاق معقدة</p>
+                    <div class="case-result success">نتيجة: فوز كامل</div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Testimonials Section -->
+    <!-- قسم آراء العملاء -->
     <section class="testimonials-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">Client Testimonials</h2>
-            <p class="section-subtitle">What our clients say about their experience with Al Mubashri Law Firm</p>
-        </div>
-
-        <div class="testimonials-swiper swiper" data-aos="fade-up">
+        <div class="testimonials-swiper">
             <div class="swiper-wrapper">
+                <!-- رأي 1 -->
                 <div class="swiper-slide">
                     <div class="testimonial-card">
                         <div class="client-info">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
-                            <div class="client-details">
-                                <h4>Ahmed Al Saadi</h4>
-                                <span>Businessman</span>
-                            </div>
+                            <img src="https://ilaw.ae/wp-content/uploads/2024/11/2.webp" alt="عميل">
+                            <h4>أحمد السعدي</h4>
+                            <span>رجل أعمال</span>
                         </div>
-                        <p class="testimonial-text">"The professionalism and speed in completing legal procedures
-                            exceeded expectations. The team was precise and attentive to all details. I highly recommend
-                            Al Mubashri Law Firm."</p>
+                        <p>"المهنية والسرعة في إنهاء الإجراءات القانونية كانت فوق التوقعات، شكراً لفريق المباشري"</p>
                         <div class="rating">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                 class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -2452,170 +2355,106 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="client-info">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميلة">
+                            <div class="client-details">
+                                <h4>سارة محمد</h4>
+                                <span>ربة منزل</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "شكراً لفريق المباشري على مساعدتي في قضية الأحوال الشخصية، كانوا محترفين جداً ومتعاطفين مع
+                            ظروفي، وحققوا لي كل ما أريد في وقت قياسي"
+                        </p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="client-info">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="عميل">
+                            <div class="client-details">
+                                <h4>خالد عبدالله</h4>
+                                <span>مدير شركة</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "تعاملت مع العديد من المكاتب القانونية، لكن مكتب المباشري كان الأفضل من حيث الخبرة
+                            والاحترافية، أنقذوا شركتي من خسائر كبيرة بفضل استشاراتهم القانونية الدقيقة"
+                        </p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
 
-
-    <!-- Pricing Section -->
+    <!-- قسم الباقات -->
     <section class="pricing-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">Legal Service Packages</h2>
-            <p class="section-subtitle">Choose the package that best suits your legal needs</p>
+        <div class="section-header">
+            <h2 class="section-title">باقات الخدمات</h2>
+            <p class="section-subtitle">اختر الباقة المناسبة لاحتياجاتك القانونية</p>
         </div>
 
         <div class="pricing-cards">
-            <div class="price-card basic" data-aos="fade-up" data-aos-delay="100">
+            <!-- باقة أساسية -->
+            <div class="price-card basic">
                 <div class="price-header">
                     <h3>Basic Package</h3>
                     <div class="price">5,000<span>AED/month</span></div>
                 </div>
                 <ul class="features">
-                    <li><i class="fas fa-check"></i>4 Monthly Legal Consultations</li>
-                    <li><i class="fas fa-check"></i>Review of 3 Contracts Monthly</li>
-                    <li><i class="fas fa-check"></i>Follow-up on One Case</li>
-                    <li><i class="fas fa-times"></i>Full Legal Representation</li>
-                    <li><i class="fas fa-times"></i>Drafting New Contracts</li>
+                    <li><i class="fas fa-check"></i>استشارات قانونية شهرية</li>
+                    <li><i class="fas fa-check"></i>مراجعة 3 عقود</li>
+                    <li><i class="fas fa-times"></i>تمثيل قضائي</li>
                 </ul>
-                <a href="#contact" class="price-cta">Choose Package</a>
+                <a href="#" class="price-cta">اختر الباقة</a>
             </div>
 
-            <div class="price-card premium" data-aos="fade-up" data-aos-delay="200">
+            <!-- باقة مميزة (مميزة) -->
+            <div class="price-card premium">
                 <div class="price-header">
                     <h3>Premium Package</h3>
                     <div class="price">15,000<span>AED/month</span></div>
                 </div>
                 <ul class="features">
-                    <li><i class="fas fa-check"></i>Unlimited Legal Consultations</li>
-                    <li><i class="fas fa-check"></i>Representation in Two Courts</li>
-                    <li><i class="fas fa-check"></i>Drafting 10 Contracts Monthly</li>
-                    <li><i class="fas fa-check"></i>Unlimited Contract Review</li>
-                    <li><i class="fas fa-check"></i>Follow-up on 5 Cases</li>
+                    <li><i class="fas fa-check"></i>استشارات غير محدودة</li>
+                    <li><i class="fas fa-check"></i>تمثيل في محكمتين</li>
+                    <li><i class="fas fa-check"></i>صياغة 10 عقود</li>
                 </ul>
-                <a href="#contact" class="price-cta">Choose Package</a>
-            </div>
-
-            <div class="price-card professional" data-aos="fade-up" data-aos-delay="300">
-                <div class="price-header">
-                    <h3>Professional Package</h3>
-                    <div class="price">25,000<span>AED/month</span></div>
-                </div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i>Unlimited Legal Consultations</li>
-                    <li><i class="fas fa-check"></i>Representation in All Courts</li>
-                    <li><i class="fas fa-check"></i>Unlimited Contract Drafting</li>
-                    <li><i class="fas fa-check"></i>Full Legal Supervision of Your Company</li>
-                    <li><i class="fas fa-check"></i>Legal Risk Management</li>
-                </ul>
-                <a href="#contact" class="price-cta">Choose Package</a>
+                <a href="#" class="price-cta">اختر الباقة</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="contact-overlay"></div>
-        <div class="contact-container">
-            <div class="contact-info" data-aos="fade-right">
-                <h2>Contact Us</h2>
-                <p>We are here to assist you with any legal inquiries you may have. Feel free to contact us through any
-                    of the following methods:</p>
-
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Address</h4>
-                            <p>Dubai, United Arab Emirates<br>Emirates Tower, 12th Floor</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <p><a href="tel:+97141234567">+971 4 123 4567</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p><a href="mailto:info@almubasheri.com">info@almubasheri.com</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-media">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <div class="contact-form" data-aos="fade-left">
-                <h2>Send Us a Message</h2>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="Your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="Your phone number">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" class="form-input" placeholder="Subject of the message">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" class="form-textarea" placeholder="Your message"></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.238318029402!2d55.27218771501038!3d25.19798398387871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1sen!2sae!4v1620000000000!5m2!1sen!2sae"
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- الفوتر -->
     <footer class="site-footer">
         <div class="footer-wave"></div>
         <div class="footer-columns">
             <div class="footer-col about">
-                <h4>About Us</h4>
-                <p>Al Mubasheri Advocates & Legal Consultancy is one of the leading law firms in the United Arab
-                    Emirates, providing
-                    comprehensive legal services to our clients since 2008.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <h4>عن المكتب</h4>
+                <p>مكتب رائد في تقديم الحلول القانونية منذ 2010</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -2623,86 +2462,28 @@
             </div>
 
             <div class="footer-col links">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#expertise">Our Expertise</a></li>
-                    <li><a href="#cases">Cases</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
                 </ul>
             </div>
 
             <div class="footer-col contact">
-                <h4>Contact Information</h4>
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="footer-contact-text">
-                        Dubai, United Arab Emirates<br>Emirates Tower, 12th Floor
-                    </div>
-                </div>
-
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="footer-contact-text">
-                        <a href="tel:+97141234567">+971 4 123 4567</a>
-                    </div>
-                </div>
-
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="footer-contact-text">
-                        <a href="mailto:info@almubasheri.com">info@almubasheri.com</a>
-                    </div>
-                </div>
+                <h4>اتصل بنا</h4>
+                <p><i class="fas fa-map-marker"></i> دبي، الإمارات</p>
+                <p><i class="fas fa-phone"></i> +97141234567</p>
+                <p><i class="fas fa-envelope"></i> info@almubasheri.com</p>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; <span id="year"></span> AL MUBASHERI. All Rights Reserved</p>
+            <p>© 2024 AL MUBASHERI. جميع الحقوق محفوظة</p>
         </div>
     </footer>
-
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS Animation
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-in-out'
-        });
-
-        // Initialize Hero Slider
-        const heroSwiper = new Swiper('.hero-slider', {
-            effect: 'fade',
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            ltr: true
-        });
-
-        // Initialize Testimonials Slider
+        // تهيئة سلايدر آراء العملاء
         const testimonialSwiper = new Swiper('.testimonials-swiper', {
             loop: true,
             slidesPerView: 1,
