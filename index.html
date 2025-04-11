@@ -310,7 +310,7 @@
 
         .cta-button {
             background: var(--color-accent);
-            color: var(--color-secondary);
+            color: var(--color-secondary) !important;
             padding: 0.7rem 1.5rem;
             border: none;
             border-radius: 30px;
@@ -325,6 +325,10 @@
             background: var(--color-primary);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(125, 85, 38, 0.4);
+        }
+
+        .cta-button a:hover {
+            color: var(--color-secondary) !important;
         }
 
         .mobile-menu-toggle {
@@ -794,11 +798,13 @@
             background: var(--color-primary);
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(125, 85, 38, 0.6);
+            color: var(--color-secondary);
         }
 
         .cta-button-outline:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
+            color: var(--color-secondary);
         }
 
         /* About Section Styles */
@@ -935,6 +941,7 @@
             cursor: pointer;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             border: 2px dashed rgba(102, 55, 0, 0.2);
+            padding: 10px;
         }
 
         .expertise-item:hover {
@@ -2041,7 +2048,8 @@
         </div>
         <div class="secondary-right">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/97143589998?text=مرحبًا، أود الاستفسار عن خدماتكم."><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/97143589998?text=مرحبًا، أود الاستفسار عن خدماتكم."><i
+                    class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="index2.html" target="_blank" rel="noopener noreferrer">العربية</a>
